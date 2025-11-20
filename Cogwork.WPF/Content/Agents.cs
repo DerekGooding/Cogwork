@@ -1,13 +1,20 @@
 ﻿namespace Cogwork.WPF.Content;
 
-public readonly record struct Agent(string Name, string Prompt) : INamed;
+public enum AgentType
+{
+    Planner, // Generates project reviews and next steps
+    Tasker,  // Converts next steps into actionable tasks
+    Worker   // Executes tasks to implement features or fixes
+}
+
+public readonly record struct Agent(string Name, AgentType Type, string Prompt) : INamed;
 
 [Singleton]
 public partial class Agents : IContent<Agent>
 {
     public Agent[] All { get; } =
     [
-        new("Worker",
+        new("Worker", AgentType.Worker,
             """
             You are the Project Worker Agent for the AgentSimMiddleware project.
 
@@ -29,7 +36,7 @@ public partial class Agents : IContent<Agent>
             - For code tasks, follow the project architecture and hybrid C++ + C# design.
             """
         ),
-        new("Tasker",
+        new("Tasker", AgentType.Tasker,
             """
             You are the Project Tasker Agent for the AgentSimMiddleware project.
 
@@ -54,7 +61,7 @@ public partial class Agents : IContent<Agent>
             - Keep the Worker Agent as the only agent that modifies code or documentation
             """
         ),
-        new("Planner",
+        new("Planner", AgentType.Planner,
             """
             You are the Project Planner Agent for the AgentSimMiddleware project. 
 
