@@ -1,10 +1,7 @@
-﻿using Cogwork.Generated;
-
-namespace Cogwork;
+﻿namespace Cogwork;
 
 internal static class Program
 {
-    private readonly static Host _host = Host.Initialize();
 
     static void Main()
     {

@@ -1,4 +1,4 @@
-﻿namespace Cogwork.Content;
+﻿namespace Cogwork.WPF.Content;
 
 public readonly record struct Agent(string Name, string Prompt) : INamed;
 

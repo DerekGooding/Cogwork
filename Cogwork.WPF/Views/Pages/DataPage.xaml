@@ -19,12 +19,12 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ui:VirtualizingItemsControl
+        <!--<ui:VirtualizingItemsControl
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
             ItemsSource="{Binding ViewModel.Colors, Mode=OneWay}"
             VirtualizingPanel.CacheLengthUnit="Item">
             <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type models:DataColor}">
+                <DataTemplate>
                     <ui:Button
                         Width="80"
                         Height="80"
@@ -38,6 +38,6 @@
                         Icon="Fluent24" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-        </ui:VirtualizingItemsControl>
+        </ui:VirtualizingItemsControl>-->
     </Grid>
 </Page>
