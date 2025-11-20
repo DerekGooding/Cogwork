@@ -25,7 +25,7 @@ public partial class SettingsViewModel : INavigationAware
     private void InitializeViewModel()
     {
         CurrentTheme = ApplicationThemeManager.GetAppTheme();
-        AppVersion = $"UiDesktopApp1 - {AssemblyVersion}";
+        AppVersion = $"Cogworks - {AssemblyVersion}";
 
         _isInitialized = true;
     }
