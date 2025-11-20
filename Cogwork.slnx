@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Cogwork.Test/Cogwork.Test.csproj" Id="e00baa17-00c3-462a-9f27-8c2e29a74661" />
+  <Project Path="Cogwork.WPF/Cogwork.WPF.csproj" />
+  <Project Path="Cogwork/Cogwork.csproj" Id="708d3e57-c6e9-4813-b85e-427d9e514bc3" />
+</Solution>
