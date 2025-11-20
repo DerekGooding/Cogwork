@@ -3,14 +3,15 @@ using Wpf.Ui.Controls;
 
 namespace Cogwork.WPF.ViewModels.Windows;
 
-public partial class MainWindowViewModel : ObservableObject
+[Singleton, ViewModel]
+public partial class MainWindowViewModel
 {
-    [ObservableProperty]
-    private string _applicationTitle = "WPF UI - Cogwork.WPF";
+    [Bind]
+    private string _applicationTitle = "Cogwork";
 
-    [ObservableProperty]
-    private ObservableCollection<object> _menuItems = new()
-    {
+    [Bind]
+    private ObservableCollection<object> _menuItems =
+    [
         new NavigationViewItem()
         {
             Content = "Home",
@@ -23,22 +24,22 @@ public partial class MainWindowViewModel : ObservableObject
             Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
             TargetPageType = typeof(Views.Pages.DataPage)
         }
-    };
+    ];
 
-    [ObservableProperty]
-    private ObservableCollection<object> _footerMenuItems = new()
-    {
+    [Bind]
+    private ObservableCollection<object> _footerMenuItems =
+    [
         new NavigationViewItem()
         {
             Content = "Settings",
             Icon = new SymbolIcon { Symbol = SymbolRegular.Settings24 },
             TargetPageType = typeof(Views.Pages.SettingsPage)
         }
-    };
+    ];
 
-    [ObservableProperty]
-    private ObservableCollection<MenuItem> _trayMenuItems = new()
-    {
+    [Bind]
+    private ObservableCollection<MenuItem> _trayMenuItems =
+    [
         new MenuItem { Header = "Home", Tag = "tray_home" }
-    };
+    ];
 }

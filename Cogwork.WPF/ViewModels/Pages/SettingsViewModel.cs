@@ -3,15 +3,14 @@ using Wpf.Ui.Appearance;
 
 namespace Cogwork.WPF.ViewModels.Pages;
 
-public partial class SettingsViewModel : ObservableObject, INavigationAware
+[Singleton, ViewModel]
+public partial class SettingsViewModel : INavigationAware
 {
-    private bool _isInitialized = false;
+    private bool _isInitialized;
 
-    [ObservableProperty]
-    private string _appVersion = String.Empty;
+    [Bind] private string _appVersion = string.Empty;
 
-    [ObservableProperty]
-    private ApplicationTheme _currentTheme = ApplicationTheme.Unknown;
+    [Bind] private ApplicationTheme _currentTheme = ApplicationTheme.Unknown;
 
     public Task OnNavigatedToAsync()
     {
@@ -26,19 +25,15 @@ public partial class SettingsViewModel : ObservableObject, INavigationAware
     private void InitializeViewModel()
     {
         CurrentTheme = ApplicationThemeManager.GetAppTheme();
-        AppVersion = $"UiDesktopApp1 - {GetAssemblyVersion()}";
+        AppVersion = $"UiDesktopApp1 - {AssemblyVersion}";
 
         _isInitialized = true;
     }
 
-    private string GetAssemblyVersion()
-    {
-        return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
-            ?? String.Empty;
-    }
+    private static string AssemblyVersion => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? string.Empty;
 
-    [RelayCommand]
-    private void OnChangeTheme(string parameter)
+    [Command(AcceptParameter = true)]
+    public void ChangeTheme(string parameter)
     {
         switch (parameter)
         {

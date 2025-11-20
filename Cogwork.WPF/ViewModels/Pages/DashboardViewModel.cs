@@ -1,13 +1,9 @@
 ﻿namespace Cogwork.WPF.ViewModels.Pages;
 
-public partial class DashboardViewModel : ObservableObject
+[Singleton, ViewModel]
+public partial class DashboardViewModel
 {
-    [ObservableProperty]
-    private int _counter = 0;
+    [Bind] private int _counter;
 
-    [RelayCommand]
-    private void OnCounterIncrement()
-    {
-        Counter++;
-    }
+    [Command] public void CounterIncrement() => Counter++;
 }

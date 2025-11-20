@@ -4,12 +4,12 @@ using Wpf.Ui.Abstractions.Controls;
 
 namespace Cogwork.WPF.ViewModels.Pages;
 
-public partial class DataViewModel : ObservableObject, INavigationAware
+[Singleton, ViewModel]
+public partial class DataViewModel : INavigationAware
 {
     private bool _isInitialized = false;
 
-    [ObservableProperty]
-    private IEnumerable<DataColor> _colors;
+    [Bind] private IEnumerable<DataColor> _colors = [];
 
     public Task OnNavigatedToAsync()
     {
@@ -26,7 +26,8 @@ public partial class DataViewModel : ObservableObject, INavigationAware
         var random = new Random();
         var colorCollection = new List<DataColor>();
 
-        for (int i = 0; i < 8192; i++)
+        for (var i = 0; i < 8192; i++)
+        {
             colorCollection.Add(
                 new DataColor
                 {
@@ -40,6 +41,7 @@ public partial class DataViewModel : ObservableObject, INavigationAware
                     )
                 }
             );
+        }
 
         Colors = colorCollection;
 

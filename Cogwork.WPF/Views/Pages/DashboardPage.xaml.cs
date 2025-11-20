@@ -3,6 +3,7 @@ using Wpf.Ui.Abstractions.Controls;
 
 namespace Cogwork.WPF.Views.Pages;
 
+[Singleton]
 public partial class DashboardPage : INavigableView<DashboardViewModel>
 {
     public DashboardViewModel ViewModel { get; }

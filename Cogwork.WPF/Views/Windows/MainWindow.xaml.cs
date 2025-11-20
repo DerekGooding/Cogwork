@@ -1,4 +1,5 @@
-﻿using Cogwork.WPF.ViewModels.Windows;
+﻿using Cogwork.WPF.Services;
+using Cogwork.WPF.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
@@ -6,6 +7,7 @@ using Wpf.Ui.Controls;
 
 namespace Cogwork.WPF.Views.Windows;
 
+[Singleton]
 public partial class MainWindow : INavigationWindow
 {
     public MainWindowViewModel ViewModel { get; }
@@ -52,13 +54,7 @@ public partial class MainWindow : INavigationWindow
         Application.Current.Shutdown();
     }
 
-    INavigationView INavigationWindow.GetNavigation()
-    {
-        throw new NotImplementedException();
-    }
+    INavigationView INavigationWindow.GetNavigation() => throw new NotImplementedException();
 
-    public void SetServiceProvider(IServiceProvider serviceProvider)
-    {
-        throw new NotImplementedException();
-    }
+    public void SetServiceProvider(IServiceProvider serviceProvider) => throw new NotImplementedException();
 }
