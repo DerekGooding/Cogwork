@@ -16,3 +16,7 @@
 ## Human API
 - Handle Human context files => CRUD for scope, roadmap and other context files. Planners will consume as part of their prompts. 
 - Handle Human warnings bucket. 
+
+## LLM Manager (Optional based on model availability) 
+- Track llm usage by model
+- Prioretize specific model usage per agent
